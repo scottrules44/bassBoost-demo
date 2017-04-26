@@ -1,6 +1,7 @@
 local bassBoost = require "plugin.bassBoost"
 local json = require("json")
 local backgroundMusic = audio.loadStream("song1.mp3")
+bassBoost.init(1000,0)
 audio.play( backgroundMusic, { channel=1, loops=-1 } )
 local bg = display.newRect( display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight )
 local logo = display.newText( "Bass Booster Plugin", 0, 0, native.systemFontBold, 20 )
@@ -16,7 +17,6 @@ boostButton = widget.newButton( {
 		if (e.phase == "began") then
 			boostButton.alpha = 1
 			boostSwitch = (boostSwitch+1)%2
-			print(boostSwitch)
 			if (boostSwitch == 1) then
 				boostButton:setLabel("Disable Bass")
 				bassBoost.setStrength(0)
